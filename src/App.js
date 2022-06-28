@@ -1,8 +1,8 @@
-function App() {
+import Routes from "./routes";
+
+const App = () => {
   return (
-    <div className="App">
-      teste
-    </div>
+    <Routes />
   );
 }
 
