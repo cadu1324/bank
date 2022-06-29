@@ -22,7 +22,7 @@ const Card = () => {
   const post = () => {
     axios
       .post(
-        `http://localhost:3000/login`,
+        `http://localhost:5000/login`,
         {
           email: email,
           password: password,
@@ -67,6 +67,7 @@ const Card = () => {
           id="outlined-basic"
           label="Email"
           variant="outlined"
+          type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -74,6 +75,7 @@ const Card = () => {
           id="outlined-basic"
           label="Password"
           variant="outlined"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
