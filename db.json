@@ -1,19 +1,37 @@
 {
-  "login": [
+  "data": [
     {
-      "username": "Cadu",
-      "password": "password",
-      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NTY0NjExMDYsImV4cCI6MTY4Nzk5NzEwNiwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.NsAvJxE6H1VWUhTsf9dH_aQkgSCO7rL6X3syg0Yci6E"
+      "id": 1,
+      "name": "Guilherme Q2Pay",
+      "document": "904.289.970-07",
+      "bank": {
+        "bankName": "237 - Banco Bradesco S.A.",
+        "code": "237",
+        "agency": "0001",
+        "account": "1167115-2"
+      }
     },
     {
-      "username": "Guto",
-      "password": "password",
-      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NTY0NjExMDYsImV4cCI6MTY4Nzk5NzEwNiwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.NsAvJxE6H1VWUhTsf9dH_aQkgSCO7rL6X3syg0Yci6E"
+      "id": 2,
+      "name": "Dimitry Q2Pay",
+      "document": "025.666.670-98",
+      "bank": {
+        "bankName": "033 - Banco Santander Brasil S.A.",
+        "code": "033",
+        "agency": "3634",
+        "account": "35934064-0"
+      }
     },
     {
-      "username": "João",
-      "password": "password",
-      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NTY0NjExMDYsImV4cCI6MTY4Nzk5NzEwNiwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.NsAvJxE6H1VWUhTsf9dH_aQkgSCO7rL6X3syg0Yci6E"
+      "id": 3,
+      "name": "Juan Q2Pay",
+      "document": "092.607.860-70",
+      "bank": {
+        "bankName": "001 - Banco do Brasil S.A.",
+        "code": "001",
+        "agency": "2086",
+        "account": "24206-3"
+      }
     }
   ]
 }

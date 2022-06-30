@@ -13,11 +13,13 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Card from "../Card";
-import { autocompleteClasses, Container } from "@mui/material";
+import { Container } from "@mui/material";
+import DropDown from "../DropDown"
 
 const drawerWidth = 240;
 
 const ClippedDrawer = () => {
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -58,26 +60,27 @@ const ClippedDrawer = () => {
           </List>
         </Box>
       </Drawer>
-      <Container component="main" sx={{ marginTop: 13, display: "flex", justifyContent: "center", alignContent: "center", gap: 20 }}>
+      <Container component="main" sx={{ marginTop: 20, display: "flex", justifyContent: "center", alignContent: "center", gap: 20 }}>
+        <DropDown />
         <Box 
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: 12
+            gap: 5
           }}
         >
-          <Card></Card>
-          <Card></Card>
+          <Card text={"alo"}/>
+          <Card text={"20202002"}></Card>
         </Box>
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: 12
+            gap: 5
           }}
         >
-          <Card></Card>
-          <Card></Card>
+          <Card text={"alo"} />
+          <Card text={"alo"}></Card>
         </Box>
       </Container>
     </Box>

@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 
-const Card = () => {
+const Card = (props) => {
     return(
         <Box 
             sx={{
@@ -12,7 +12,7 @@ const Card = () => {
                 boxShadow: 2,
             }}
         >  
-            teste
+            <h1>{props.text}</h1>
         </Box>
     );
 };
