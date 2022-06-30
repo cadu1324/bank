@@ -15,14 +15,14 @@ const Card = () => {
 
   let history = useHistory();
 
-  function handleClick(url) {
-    history.push(`/${url}`);
+  function handleClick() {
+    history.push("/home");
   }
 
   const post = () => {
     axios
       .post(
-        `http://localhost:4000/login`,
+        `http://localhost:4000/users`,
         {
           email: email,
           password: password,
@@ -30,9 +30,9 @@ const Card = () => {
         { headers }
       )
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === 201) {
           localStorage.setItem("token", response.data.accessToken);
-            handleClick("");
+          handleClick();
         }
         return false;
       });
@@ -80,20 +80,9 @@ const Card = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 1
-        }}
-      >
-        <Button variant="contained" onClick={() => post()}>
-          Entrar
-        </Button>
-        <a href="http://localhost:3000/register">Registre-se</a>
-      </Box>
+      <Button variant="contained" onClick={() => post()}>
+        Registar
+      </Button>
     </Box>
   );
 };
