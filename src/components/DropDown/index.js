@@ -6,11 +6,13 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
 
-const BasicSelect = () => {
+const BasicSelect = (props) => {
   const [data, setData] = React.useState([]);
   const [event, setEvent] = React.useState(0);
+
   const handleChange = (event) => {
     setEvent(event.target.value);
+    props.setValue(event)
   };
 
   const getData = async () => {
@@ -20,10 +22,10 @@ const BasicSelect = () => {
   
   React.useEffect(() => {
     getData();
-  }, [getData]);
+  }, []);
 
   return (
-    <Box sx={{ minWidth: 1370, position: "absolute", marginTop: -10 }}>
+    <Box sx={{ minWidth: 750, position: "absolute", marginTop: -10 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Nome</InputLabel>
         <Select
