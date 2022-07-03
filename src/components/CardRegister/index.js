@@ -16,13 +16,13 @@ const Card = () => {
   let history = useHistory();
 
   function handleClick() {
-    history.push("/home");
+    history.push("/");
   }
 
   const post = () => {
     axios
       .post(
-        `http://localhost:4000/users`,
+        `http://localhost:3001/register`,
         {
           email: email,
           password: password,
@@ -30,7 +30,7 @@ const Card = () => {
         { headers }
       )
       .then((response) => {
-        if (response.status === 201) {
+        if (response.status === 200) {
           localStorage.setItem("token", response.data.accessToken);
           handleClick();
         }
