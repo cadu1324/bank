@@ -92,7 +92,7 @@ const Card = () => {
         <Button variant="contained" onClick={() => post()}>
           Entrar
         </Button>
-        <a href="https://api-q2-test.herokuapp.com/register">Registre-se</a>
+        <a href="https://q2pay-teste.herokuapp.com/register">Registre-se</a>
       </Box>
     </Box>
   );
