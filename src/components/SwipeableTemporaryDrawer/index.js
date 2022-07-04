@@ -33,7 +33,7 @@ const ClippedDrawer = () => {
       Authorization: `Bearer ${token}`,
     };
     const response = await axios.get(
-      `http://localhost:3001/data?id=${event.target.value}`,
+      `https://api-q2-test.herokuapp.com/data?id=${event.target.value}`,
       { headers }
     );
     response.data.result.map((option) => {

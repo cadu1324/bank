@@ -22,7 +22,7 @@ const BasicSelect = (props) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     };
-    const response = await axios.get("http://localhost:3001/data", { headers });
+    const response = await axios.get("https://api-q2-test.herokuapp.com/data", { headers });
     const result = response.data.result.users.map((option) => {
       return option
     })

@@ -3,11 +3,12 @@ import CardLogin from "../../components/CardLogin";
 import LoginStyle from "./styles";
 
 const Login = () => {
-    return(
-        <LoginStyle>
-            <CardLogin />
-        </LoginStyle>
-    )
-}
+  document.title = "Login";
+  return (
+    <LoginStyle>
+      <CardLogin />
+    </LoginStyle>
+  );
+};
 
 export default Login;

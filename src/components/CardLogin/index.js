@@ -22,7 +22,7 @@ const Card = () => {
   const post = () => {
     axios
       .post(
-        `http://localhost:3001/login`,
+        `https://api-q2-test.herokuapp.com/login`,
         {
           email: email,
           password: password,
@@ -92,7 +92,7 @@ const Card = () => {
         <Button variant="contained" onClick={() => post()}>
           Entrar
         </Button>
-        <a href="http://localhost:3000/register">Registre-se</a>
+        <a href="https://api-q2-test.herokuapp.com/register">Registre-se</a>
       </Box>
     </Box>
   );

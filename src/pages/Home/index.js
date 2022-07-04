@@ -2,6 +2,7 @@ import React from "react";
 import SwipeableTemporaryDrawer from "../../components/SwipeableTemporaryDrawer";
 
 const Home = () => {
+  document.title = "Home";
   return <SwipeableTemporaryDrawer />;
 };
 

@@ -22,7 +22,7 @@ const Card = () => {
   const post = () => {
     axios
       .post(
-        `http://localhost:3001/register`,
+        `https://api-q2-test.herokuapp.com/register`,
         {
           email: email,
           password: password,
