@@ -22,7 +22,7 @@ const Card = () => {
   const post = () => {
     axios
       .post(
-        `http://localhost:4000/login`,
+        `https://api-q2-test.herokuapp.com/login`,
         {
           email: email,
           password: password,
@@ -32,7 +32,7 @@ const Card = () => {
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("token", response.data.accessToken);
-            handleClick("");
+          handleClick("");
         }
         return false;
       });
@@ -86,13 +86,13 @@ const Card = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          gap: 1
+          gap: 1,
         }}
       >
         <Button variant="contained" onClick={() => post()}>
           Entrar
         </Button>
-        <a href="http://localhost:3000/register">Registre-se</a>
+        <a href="https://api-q2-test.herokuapp.com/register">Registre-se</a>
       </Box>
     </Box>
   );

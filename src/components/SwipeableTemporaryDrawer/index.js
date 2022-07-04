@@ -27,10 +27,16 @@ const ClippedDrawer = () => {
   const [show, setShow] = useState(false);
 
   const getData = async () => {
+    const token = localStorage.getItem("token");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
     const response = await axios.get(
-      `http://localhost:5000/data?id=${event.target.value}`
+      `https://api-q2-test.herokuapp.com/data?id=${event.target.value}`,
+      { headers }
     );
-    response.data.map((option) => {
+    response.data.result.map((option) => {
       setName(option.name);
       setBank(option.bank.bankName);
       setAgency(option.bank.agency);

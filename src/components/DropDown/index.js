@@ -16,8 +16,17 @@ const BasicSelect = (props) => {
   };
 
   const getData = async () => {
-    const response = await axios.get("http://localhost:5000/data");
-    setData(response.data)
+    const token = localStorage.getItem("token");
+    
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.get("https://api-q2-test.herokuapp.com/data", { headers });
+    const result = response.data.result.users.map((option) => {
+      return option
+    })
+    setData(result)
   }
   
   React.useEffect(() => {
