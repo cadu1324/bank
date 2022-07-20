@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import { TextField, Button } from "@mui/material";
-import svgLogo from "../../assets/quero-2-pay-logo.png";
+import pngLogo from "/public/images/quero-2-pay-logo.png";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Card = () => {
   const [email, setEmail] = useState("");
@@ -13,10 +13,10 @@ const Card = () => {
     "Content-Type": "application/json",
   };
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   function handleClick(url) {
-    history.push(`/${url}`);
+    navigate(`/${url}`);
   }
 
   const post = () => {
@@ -53,7 +53,7 @@ const Card = () => {
         backgroundColor: "#fafafa",
       }}
     >
-      <img src={svgLogo} alt="Logo svg" />
+      <img src={pngLogo} alt="Logo svg" />
       <Box
         sx={{
           display: "flex",
