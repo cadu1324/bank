@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 
-const Card = (props) => {
+const Card: React.FC<any> = (props) => {
   return (
     <Box
       sx={{

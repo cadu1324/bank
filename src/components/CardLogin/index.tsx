@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import { TextField, Button } from "@mui/material";
-import pngLogo from "../../../public/images/quero-2-pay-logo.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -13,9 +12,9 @@ const Card = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
-  function handleClick(url) {
+  function handleClick(url: any) {
     navigate(`/${url}`);
   }
 
@@ -53,7 +52,7 @@ const Card = () => {
         backgroundColor: "#fafafa",
       }}
     >
-      <img src={pngLogo} alt="Logo svg" />
+      <img src="/public/images/quero-2-pay-logo.png" />
       <Box
         sx={{
           display: "flex",

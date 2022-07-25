@@ -5,14 +5,15 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
+import { Users, UserResponse, Propertie } from "./types";
 
-const BasicSelect = (props) => {
-  const [data, setData] = React.useState([]);
-  const [event, setEvent] = React.useState(0);
+const BasicSelect : React.FC<Propertie> = (props) => {
+  const [data, setData] = React.useState<Users[]>([]);
+  const [event, setEvent] = React.useState<number>(0);
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     setEvent(event.target.value);
-    props.setValue(event)
+    // props.setValue(event)
   };
 
   const getData = async () => {
@@ -22,7 +23,7 @@ const BasicSelect = (props) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     };
-    const response = await axios.get("https://api-q2-test.herokuapp.com/data", { headers });
+    const response = await axios.get<UserResponse>("https://api-q2-test.herokuapp.com/data", { headers });
     const result = response.data.result.users.map((option) => {
       return option
     })
