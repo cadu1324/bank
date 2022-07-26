@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -52,7 +52,7 @@ const Card = () => {
         backgroundColor: "#fafafa",
       }}
     >
-      <img src="/public/images/quero-2-pay-logo.png" />
+      <Typography variant="h2" color="#246eb1">Bank</Typography>
       <Box
         sx={{
           display: "flex",

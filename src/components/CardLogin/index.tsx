@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import { TextField, Button } from "@mui/material";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import Box from '@mui/material/Box';
+import { TextField, Button, Typography } from '@mui/material';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const headers = {
-  "Content-Type": "application/json",
+  'Content-Type': 'application/json',
 };
 
 const Card = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
 
@@ -26,12 +26,12 @@ const Card = () => {
           email: email,
           password: password,
         },
-        { headers }
+        { headers },
       )
       .then((response) => {
         if (response.status === 200) {
-          localStorage.setItem("token", response.data.accessToken);
-          handleClick("");
+          localStorage.setItem('token', response.data.accessToken);
+          handleClick('');
         }
         return false;
       });
@@ -40,28 +40,28 @@ const Card = () => {
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 6,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 4,
         width: 350,
         height: 350,
         borderRadius: 2,
         boxShadow: 2,
-        backgroundColor: "#fafafa",
-      }}
-    >
-      <img src="/public/images/quero-2-pay-logo.png" />
+        backgroundColor: '#fafafa',
+      }}>
+      
+      <Typography variant="h2" color="#246eb1">Bank</Typography>
+      
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
           gap: 1,
-        }}
-      >
+        }}>
         <TextField
           id="outlined-basic"
           label="Email"
@@ -81,17 +81,18 @@ const Card = () => {
       </Box>
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
           gap: 1,
-        }}
-      >
+        }}>
         <Button variant="contained" onClick={() => post()}>
           Entrar
         </Button>
-        <a href="http://ec2-44-201-242-25.compute-1.amazonaws.com/register">Registre-se</a>
+        <Button onClick={() => {handleClick('register')}}>
+          Registrar
+        </Button>
       </Box>
     </Box>
   );
