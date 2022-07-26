@@ -7,5 +7,5 @@ COPY /build .
 
 RUN npm install --global serve 
 
-EXPOSE 3000
-CMD ["serve", "-l", "3000", "-s", "build"]
+EXPOSE 80
+CMD ["serve", "-l", "80", "-s", "build"]
