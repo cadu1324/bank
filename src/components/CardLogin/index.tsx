@@ -1,41 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { TextField, Button, Typography } from '@mui/material';
-import axios from 'axios';
+import useAuthResponse from '../../hooks/useAuthResponse';
 import { useNavigate } from 'react-router-dom';
 
-const headers = {
-  'Content-Type': 'application/json',
-};
+const navigate = useNavigate()
 
 const Card = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const navigate = useNavigate();
-
-  function handleClick(url: any) {
-    navigate(`/${url}`);
-  }
-
-  const post = () => {
-    axios
-      .post(
-        `https://api-q2-test.herokuapp.com/login`,
-        {
-          email: email,
-          password: password,
-        },
-        { headers },
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          localStorage.setItem('token', response.data.accessToken);
-          handleClick('');
-        }
-        return false;
-      });
-  };
+  
+  const auth = useAuthResponse({ url: 'login' });
 
   return (
     <Box
@@ -87,10 +62,10 @@ const Card = () => {
           alignItems: 'center',
           gap: 1,
         }}>
-        <Button variant="contained" onClick={() => post()}>
+        <Button variant="contained" onClick={() => auth({ email, password })}>
           Entrar
         </Button>
-        <Button onClick={() => {handleClick('register')}}>
+        <Button onClick={() => {navigate('register')}}>
           Registrar
         </Button>
       </Box>
