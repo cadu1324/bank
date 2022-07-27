@@ -1,4 +1,3 @@
-import React from "react";
 import CardLogin from "../../components/CardLogin";
 import LoginStyle from "./styles";
 

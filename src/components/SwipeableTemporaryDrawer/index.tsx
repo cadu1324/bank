@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import AppBar from "@mui/material/AppBar";
@@ -25,7 +25,7 @@ const ClippedDrawer = () => {
   const [account, setAccount] = useState("");
   const [document, setDocument] = useState("");
   const [show, setShow] = useState(false);
-
+  
   // const getData = async () => {
   //   const token = localStorage.getItem("token");
   //   const headers = {
@@ -101,7 +101,7 @@ const ClippedDrawer = () => {
           gap: 20,
         }}
       >
-        {/* <DropDown setValue={setEvent} value={event} /> */}
+        <DropDown setValue={setEvent} value={event} />
         {show ? (
           <Card
             name={name}

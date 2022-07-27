@@ -5,7 +5,6 @@ import Authenticated from './auth';
 const PrivateRoute: React.FC< { children?: React.ReactNode } > = ({
   children,
 }) => {
-  
   if(Authenticated()){ 
     return <>{children}</> 
   }

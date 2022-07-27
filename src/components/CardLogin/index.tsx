@@ -4,12 +4,12 @@ import { TextField, Button, Typography } from '@mui/material';
 import useAuthResponse from '../../hooks/useAuthResponse';
 import { useNavigate } from 'react-router-dom';
 
-const navigate = useNavigate()
-
 const Card = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+
+  const navigate = useNavigate();
+
   const auth = useAuthResponse({ url: 'login' });
 
   return (
@@ -26,9 +26,10 @@ const Card = () => {
         boxShadow: 2,
         backgroundColor: '#fafafa',
       }}>
-      
-      <Typography variant="h2" color="#246eb1">Bank</Typography>
-      
+      <Typography variant="h2" color="#246eb1">
+        Bank
+      </Typography>
+
       <Box
         sx={{
           display: 'flex',
@@ -65,7 +66,10 @@ const Card = () => {
         <Button variant="contained" onClick={() => auth({ email, password })}>
           Entrar
         </Button>
-        <Button onClick={() => {navigate('register')}}>
+        <Button
+          onClick={() => {
+            navigate('/register');
+          }}>
           Registrar
         </Button>
       </Box>

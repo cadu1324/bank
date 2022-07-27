@@ -3,17 +3,15 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import axios from "axios";
 import { Users, UserResponse, Propertie } from "./types";
 
-const BasicSelect : React.FC<Propertie> = (props) => {
+const BasicSelect : React.FC<Propertie> = ({ setValue, value}) => {
   const [data, setData] = React.useState<Users[]>([]);
-  const [event, setEvent] = React.useState<number>(0);
 
-  const handleChange = (event: any) => {
-    setEvent(event.target.value);
-    // props.setValue(event)
+  const handleChange = (event: SelectChangeEvent<number>) => {
+    setValue(Number(event.target.value))
   };
 
   const getData = async () => {
@@ -41,7 +39,7 @@ const BasicSelect : React.FC<Propertie> = (props) => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={event}
+          value={value}
           label="Data"
           onChange={handleChange}
         >

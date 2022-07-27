@@ -16,5 +16,6 @@ export interface UserResponse {
 }
 
 export type Propertie = {
-  id : number;
+  setValue: React.Dispatch<React.SetStateAction<number>>;
+  value: number;
 }
