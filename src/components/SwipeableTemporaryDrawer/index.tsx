@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import AppBar from "@mui/material/AppBar";
@@ -14,41 +14,31 @@ import Card from "../Card";
 import { Container } from "@mui/material";
 import DropDown from "../DropDown";
 import axios from "axios";
+import { User, UserResponse } from "./types";
 
 const drawerWidth = 240;
 
 const ClippedDrawer = () => {
-  const [event, setEvent] = useState(2);
-  const [name, setName] = useState("");
-  const [bank, setBank] = useState("");
-  const [agency, setAgency] = useState("");
-  const [account, setAccount] = useState("");
-  const [document, setDocument] = useState("");
+  const [data, setData] = useState<User>();
   const [show, setShow] = useState(false);
-  
-  // const getData = async () => {
-  //   const token = localStorage.getItem("token");
-  //   const headers = {
-  //     "Content-Type": "application/json",
-  //     Authorization: `Bearer ${token}`,
-  //   };
-  //   const response = await axios.get(
-  //     `https://api-q2-test.herokuapp.com/data?id=${event.target.value}`,
-  //     { headers }
-  //   );
-  //   response.data.result.map((option) => {
-  //     setName(option.name);
-  //     setBank(option.bank.bankName);
-  //     setAgency(option.bank.agency);
-  //     setAccount(option.bank.account);
-  //     setDocument(option.document);
-  //   });
-  //   setShow(true);
-  // };
+  const [event, setEvent] = useState(2);
 
-  // useEffect(() => {
-  //   getData();
-  // }, [event]);
+  const getData = async () => {
+    const token = localStorage.getItem("token");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.get<UserResponse>(`https://api-q2-test.herokuapp.com/data?id=${event}`, { headers });
+    const [result] = response.data.result
+    setData(result)
+    setShow(true)
+  };
+  
+
+  useEffect(() => {
+    getData();
+  }, [event]);
 
   const current = new Date();
   const date = `${current.getDate()}/${
@@ -104,11 +94,11 @@ const ClippedDrawer = () => {
         <DropDown setValue={setEvent} value={event} />
         {show ? (
           <Card
-            name={name}
-            bank={bank}
-            agency={`Agência: ${agency}`}
-            account={`Conta: ${account}`}
-            document={`Documento: ${document}`}
+            name={data?.name}
+            bank={data?.bank}
+            agency={`Agência: ${data?.bank.agency}`}
+            account={`Conta: ${data?.bank.account}`}
+            document={`Documento: ${data?.document}`}
             data={`Data: ${date}`}
           />
         ) : (
