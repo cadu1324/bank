@@ -1,47 +1,44 @@
-import axios from "axios";
-import { useEffect, useReducer, useState } from "react";
+import axios from 'axios';
+import React, { useEffect, useReducer, useState } from 'react';
 
-const useDataResponse = () => {
-    
-    // const reducer = (state, action) => {
-    //     switch (action.type){
-    //         case 
-    //     }
-    // };
+const useDataResponse = (event: number) => {
 
-    // const [state, dispatch] = useReducer(reducer, { name: ''});
 
-    
-    // const [name, setName] = useState("");
-    // const [bank, setBank] = useState("");
-    // const [agency, setAgency] = useState("");
-    // const [account, setAccount] = useState("");
-    // const [document, setDocument] = useState("");
-    // const [show, setShow] = useState(false);
 
-    // const getData = async () => {
-    //     const token = localStorage.getItem("token");
-    //     const headers = {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${token}`,
-    //     };
-    //     const response = await axios.get(
-    //       `https://api-q2-test.herokuapp.com/data?id=${event.target.value}`,
-    //       { headers }
-    //     );
-    //     response.data.result.map((option) => {
-    //       setName(option.name);
-    //       setBank(option.bank.bankName);
-    //       setAgency(option.bank.agency);
-    //       setAccount(option.bank.account);
-    //       setDocument(option.document);
-    //     });
-    //     setShow(true);
-    //   };
-    
-    //   useEffect(() => {
-    //     getData();
-    //   }, [event]);
-}
+  // const reducer = (state: UserState, action: Actions) => {
+  //   switch(action){
+  //     default :
+  //     return {
+  //       data: state.data
+  //     }
+  //   }
+  // }
+
+
+
+  // const getData = async () => {
+  //   const token = localStorage.getItem('token');
+  //   const headers = {
+  //     'Content-Type': 'application/json',
+  //     Authorization: `Bearer ${token}`,
+  //   };
+  //   const response = await axios.get<UserResponse>(
+  //     `https://api-q2-test.herokuapp.com/data?id=${event}`,
+  //     { headers },
+  //   );
+  //   const [result] = response.data.result;
+
+  //   setShow(true);
+  // };
+
+  // useEffect(() => {
+  //   getData();
+  // }, [event]);
+
+  // const current = new Date();
+  // const date = `${current.getDate()}/${
+  //   current.getMonth() + 1
+  // }/${current.getFullYear()}`;
+};
 
 export default useDataResponse;
