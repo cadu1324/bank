@@ -1,4 +1,3 @@
-import React from "react";
 import RegisterStyle from "./styles";
 import CardRegister from "../../components/CardRegister";
 

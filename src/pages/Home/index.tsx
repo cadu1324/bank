@@ -1,4 +1,3 @@
-import React from "react";
 import SwipeableTemporaryDrawer from "../../components/SwipeableTemporaryDrawer";
 
 const Home = () => {
