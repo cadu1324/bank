@@ -1,4 +1,4 @@
-import { Actions, User } from "./types";
+import { Actions, User } from "../../components/SwipeableTemporaryDrawer/types";
 
 export interface State {
   show: boolean;

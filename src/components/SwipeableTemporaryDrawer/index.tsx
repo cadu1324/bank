@@ -1,4 +1,4 @@
-import { Reducer, useEffect, useReducer, useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -13,45 +13,16 @@ import PersonIcon from '@mui/icons-material/Person';
 import Card from '../Card';
 import { Container } from '@mui/material';
 import DropDown from '../DropDown';
-import { Actions, UserResponse } from './types';
-import axios from 'axios';
-import reducer, { State, UserActionType } from './index.reducer';
+import useDataResponse from '../../hooks/useDataResponse';
+import CurrentDay from '../../utils/dates/index.day';
 
 const drawerWidth = 240;
 
 const ClippedDrawer = () => {
   const [event, setEvent] = useState(1);
 
-  const [state, dispatch] = useReducer<Reducer<State, Actions>>(reducer, {
-    show: false,
-    user: {
-      bank: {}
-    },
-  } as State);
-
-  const getData = async () => {
-    const token = localStorage.getItem('token');
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    };
-    const response = await axios.get<UserResponse>(
-      `https://api-q2-test.herokuapp.com/data?id=${event}`,
-      { headers },
-    );
-    const result = response.data.result[0];
-    dispatch({ type:UserActionType.set, payload:result });
-  };
-
-  useEffect(() => {
-    getData();
-  }, [event]);
-
-  const current = new Date();
-  const date = `${current.getDate()}/${
-    current.getMonth() + 1
-  }/${current.getFullYear()}`;
-
+  const data = useDataResponse(event);
+  const date = CurrentDay
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -97,13 +68,13 @@ const ClippedDrawer = () => {
           gap: 20,
         }}>
         <DropDown setValue={setEvent} value={event} />
-        {state.show ? (
+        {data.show ? (
           <Card
-            name={state.user.name}
-            bank={state.user.bank.bankName}
-            agency={`Agência: ${state.user.bank.agency}`}
-            account={`Conta: ${state.user.bank.account}`}
-            document={`Documento: ${state.user.document}`}
+            name={data.user.name}
+            bank={data.user.bank.bankName}
+            agency={`Agência: ${data.user.bank.agency}`}
+            account={`Conta: ${data.user.bank.account}`}
+            document={`Documento: ${data.user.document}`}
             data={`Data: ${date}`}
           />
         ) : (

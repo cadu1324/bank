@@ -1,5 +1,3 @@
-import { UserActionType } from "./index.reducer";
-
 export type User = {
   id: number;
   name: string;
@@ -18,4 +16,11 @@ export interface UserResponse {
 export type Actions = {
   type: UserActionType;
   payload: User
+}
+export interface State {
+  show: boolean;
+  user: User;
+}
+export enum UserActionType {
+  set = 'SET_USER'
 }
