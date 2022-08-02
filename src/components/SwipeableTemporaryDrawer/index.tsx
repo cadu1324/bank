@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react';
+import { Reducer, useEffect, useReducer, useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -13,36 +13,21 @@ import PersonIcon from '@mui/icons-material/Person';
 import Card from '../Card';
 import { Container } from '@mui/material';
 import DropDown from '../DropDown';
-import { Actions, UserResponse, UserState } from './types';
+import { Actions, UserResponse } from './types';
 import axios from 'axios';
+import reducer, { State, UserActionType } from './index.reducer';
 
 const drawerWidth = 240;
 
 const ClippedDrawer = () => {
   const [event, setEvent] = useState(1);
-  const [show, setShow] = useState(false);
 
-  const reducer = (state: UserState, action: Actions) => {
-    setShow(true)
-    switch (action) {
-      default:
-        return {
-          data: action.result
-        };
-    }
-  };
-
-  const [state, dispatch] = useReducer<React.Reducer<UserState, Actions>>(
-    reducer,
-    {
-      data : {
-        id: 0,
-        name: '',
-        document: '',
-        bank: { bankName: '', code: 0, agency: 0, account: '' }
-      }
+  const [state, dispatch] = useReducer<Reducer<State, Actions>>(reducer, {
+    show: false,
+    user: {
+      bank: {}
     },
-  );
+  } as State);
 
   const getData = async () => {
     const token = localStorage.getItem('token');
@@ -54,8 +39,8 @@ const ClippedDrawer = () => {
       `https://api-q2-test.herokuapp.com/data?id=${event}`,
       { headers },
     );
-    const result = response.data.result[0]
-    dispatch({result})
+    const result = response.data.result[0];
+    dispatch({ type:UserActionType.set, payload:result });
   };
 
   useEffect(() => {
@@ -112,13 +97,13 @@ const ClippedDrawer = () => {
           gap: 20,
         }}>
         <DropDown setValue={setEvent} value={event} />
-        {show ? (
+        {state.show ? (
           <Card
-            name={state.data.name}
-            bank={state.data.bank.bankName}
-            agency={`Agência: ${state.data.bank.agency}`}
-            account={`Conta: ${state.data.bank.account}`}
-            document={`Documento: ${state.data.document}`}
+            name={state.user.name}
+            bank={state.user.bank.bankName}
+            agency={`Agência: ${state.user.bank.agency}`}
+            account={`Conta: ${state.user.bank.account}`}
+            document={`Documento: ${state.user.document}`}
             data={`Data: ${date}`}
           />
         ) : (

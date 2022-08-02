@@ -1,4 +1,6 @@
-type User = {
+import { UserActionType } from "./index.reducer";
+
+export type User = {
   id: number;
   name: string;
   document: string;
@@ -13,10 +15,7 @@ export interface UserResponse {
   result: User[];
 }
 
-export type UserState = {
-  data: User;
-}
-
 export type Actions = {
-  result: User
+  type: UserActionType;
+  payload: User
 }
