@@ -1,40 +1,13 @@
 import axios from 'axios';
 import { Reducer, useEffect, useReducer } from 'react';
 import reducer from './index.reducer';
-
-type User = {
-  id: number;
-  name: string;
-  document: string;
-  bank: {
-    bankName: string;
-    code: number;
-    agency: number;
-    account: string;
-  };
-}
-interface UserResponse {
-  result: User[];
-}
-
-type Actions = {
-  type: UserActionType;
-  payload: User
-}
-interface State {
-  show: boolean;
-  user: User;
-}
-
-enum UserActionType {
-  set = 'SET_USER'
-}
+import { Actions, State, UserActionType, UserResponse } from './types';
 
 const useDataResponse = (event: number) => {
   const [state, dispatch] = useReducer<Reducer<State, Actions>>(reducer, {
     show: false,
     user: {
-      bank: {}
+      bank: {},
     },
   } as State);
 
@@ -49,7 +22,7 @@ const useDataResponse = (event: number) => {
       { headers },
     );
     const result = response.data.result[0];
-    dispatch({ type:UserActionType.set, payload:result });
+    dispatch({ type: UserActionType.set, payload: result });
   };
 
   useEffect(() => {

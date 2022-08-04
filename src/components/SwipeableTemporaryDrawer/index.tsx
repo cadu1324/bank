@@ -22,7 +22,7 @@ const ClippedDrawer = () => {
   const [event, setEvent] = useState(1);
 
   const data = useDataResponse(event);
-  const date = CurrentDay
+  const date = CurrentDay;
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -34,7 +34,7 @@ const ClippedDrawer = () => {
             Bank
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar>-
       <Drawer
         variant="permanent"
         sx={{
