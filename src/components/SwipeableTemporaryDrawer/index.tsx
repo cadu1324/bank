@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -13,60 +13,16 @@ import PersonIcon from '@mui/icons-material/Person';
 import Card from '../Card';
 import { Container } from '@mui/material';
 import DropDown from '../DropDown';
-import { Actions, UserResponse, UserState } from './types';
-import axios from 'axios';
+import useDataResponse from '../../hooks/useDataResponse';
+import CurrentDay from '../../utils/dates/index.day';
 
 const drawerWidth = 240;
 
 const ClippedDrawer = () => {
   const [event, setEvent] = useState(1);
-  const [show, setShow] = useState(false);
 
-  const reducer = (state: UserState, action: Actions) => {
-    setShow(true)
-    switch (action) {
-      default:
-        return {
-          data: action.result
-        };
-    }
-  };
-
-  const [state, dispatch] = useReducer<React.Reducer<UserState, Actions>>(
-    reducer,
-    {
-      data : {
-        id: 0,
-        name: '',
-        document: '',
-        bank: { bankName: '', code: 0, agency: 0, account: '' }
-      }
-    },
-  );
-
-  const getData = async () => {
-    const token = localStorage.getItem('token');
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    };
-    const response = await axios.get<UserResponse>(
-      `https://api-q2-test.herokuapp.com/data?id=${event}`,
-      { headers },
-    );
-    const result = response.data.result[0]
-    dispatch({result})
-  };
-
-  useEffect(() => {
-    getData();
-  }, [event]);
-
-  const current = new Date();
-  const date = `${current.getDate()}/${
-    current.getMonth() + 1
-  }/${current.getFullYear()}`;
-
+  const data = useDataResponse(event);
+  const date = CurrentDay;
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -78,7 +34,7 @@ const ClippedDrawer = () => {
             Bank
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar>-
       <Drawer
         variant="permanent"
         sx={{
@@ -112,13 +68,13 @@ const ClippedDrawer = () => {
           gap: 20,
         }}>
         <DropDown setValue={setEvent} value={event} />
-        {show ? (
+        {data.show ? (
           <Card
-            name={state.data.name}
-            bank={state.data.bank.bankName}
-            agency={`Agência: ${state.data.bank.agency}`}
-            account={`Conta: ${state.data.bank.account}`}
-            document={`Documento: ${state.data.document}`}
+            name={data.user.name}
+            bank={data.user.bank.bankName}
+            agency={`Agência: ${data.user.bank.agency}`}
+            account={`Conta: ${data.user.bank.account}`}
+            document={`Documento: ${data.user.document}`}
             data={`Data: ${date}`}
           />
         ) : (

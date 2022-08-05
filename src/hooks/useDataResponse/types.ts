@@ -21,6 +21,7 @@ export interface State {
   show: boolean;
   user: User;
 }
+
 export enum UserActionType {
   set = 'SET_USER'
 }
