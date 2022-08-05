@@ -75,10 +75,10 @@ const ClippedDrawer = () => {
             agency={`Agência: ${data.user.bank.agency}`}
             account={`Conta: ${data.user.bank.account}`}
             document={`Documento: ${data.user.document}`}
-            data={`Data: ${date}`}
+            date={`Data: ${date}`}
           />
         ) : (
-          <Card />
+          <div></div>
         )}
       </Container>
     </Box>
