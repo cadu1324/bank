@@ -3,10 +3,12 @@ import Box from '@mui/material/Box';
 import { TextField, Button, Typography } from '@mui/material';
 import useAuthResponse from '../../hooks/useAuthResponse';
 import { useNavigate } from 'react-router-dom';
+import { Credentials } from '../../utils/types';
 
 const Card = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [credentials, setCredentials] = useState<Credentials>({ email: '', password: ''});
+
+  const {email, password} = credentials;
 
   const navigate = useNavigate();
 
@@ -44,7 +46,9 @@ const Card = () => {
           variant="outlined"
           type="text"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setCredentials(({ password }) => (
+            { email: (e.target.value), password }
+          ))}
         />
         <TextField
           id="outlined-basic"
@@ -52,7 +56,9 @@ const Card = () => {
           variant="outlined"
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setCredentials(({ email }) => (
+            { email, password: (e.target.value) }
+          ))}
         />
       </Box>
       <Box

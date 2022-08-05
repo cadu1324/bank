@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
+import { UserData } from "./types";
 
-const Card: React.FC<any> = (props) => {
+const Card: React.FC<UserData> = (props) => {
   return (
     <Box
       sx={{
@@ -19,7 +20,7 @@ const Card: React.FC<any> = (props) => {
       <h2>{props.agency}</h2>
       <h2>{props.account}</h2>
       <h2>{props.document}</h2>
-      <h3>{props.data}</h3>
+      <h3>{props.date}</h3>
     </Box>
   );
 };
