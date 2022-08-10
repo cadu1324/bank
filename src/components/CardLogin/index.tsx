@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Credentials } from '../../utils/types';
 
 const Card = () => {
-  const [credentials, setCredentials] = useState<Credentials>({ email: '', password: ''});
+  const [credentials, setCredentials] = useState<Credentials>({ email: '', password: '' });
 
   const {email, password} = credentials;
 
